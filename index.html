@@ -421,12 +421,12 @@ const QB = {
     opts:[
       {t:'後頸・頭部',   s:'頭重、後腦緊、頭痛', scores:{pang:2}, zone:'neck'},
       {t:'肩膀・斜方肌', s:'肩胛緊縮、壓迫感',   scores:{pang:2,gan:1}, zone:'shoulder'},
-      {t:'上背・膏肓',   s:'兩側肩胛間深層痠痛', scores:{pang:3}, zone:'upperback'},
+      {t:'上背・膏肓',   s:'兩側肩胛間深層痠痛', scores:{pang:1,fei:1}, zone:'upperback'},
       {t:'下背・腰部',   s:'腰部沉重、難以久站', scores:{pang:2,shen:2}, zone:'lowerback'},
-      {t:'胸口・呼吸',   s:'胸悶、容易嘆氣',     scores:{gan:2,fei:2}, zone:'chest'},
+      {t:'胸口・呼吸',   s:'胸悶、容易嘆氣',     scores:{fei:2,xin:1}, zone:'chest'},
       {t:'眼睛・頭脹',   s:'眼乾澀、太陽穴悶',   scores:{gan:3}, zone:'eyes'},
-      {t:'腿部・膝蓋',   s:'大腿後側緊、膝蓋卡', scores:{shen:2,pang:2}, zone:'legs'},
-      {t:'手腕・手臂',   s:'滑鼠手、手腕痠痛',   scores:{pang:1,fei:1}, zone:'wrist'},
+      {t:'腿部・膝蓋',   s:'大腿後側緊、膝蓋卡', scores:{shen:1,pi:1}, zone:'legs'},
+      {t:'手腕・手臂',   s:'滑鼠手、手腕痠痛',   scores:{fei:2}, zone:'wrist'},
     ],
     next:'_body_branch'
   },
@@ -466,10 +466,10 @@ const QB = {
     text:'後頸頭部的不舒服，哪個最像你？',
     multi:false,
     opts:[
-      {t:'低頭/仰頭都有拉扯感', s:'整條頸椎都不對', scores:{pang:3}},
-      {t:'頭痛集中在後腦勺',   s:'有時延伸到眉稜骨', scores:{pang:2,gan:1}},
-      {t:'頭頂發脹、頭重如戴帽',s:'下午特別嚴重',    scores:{pang:2,xin:1}},
-      {t:'耳鳴、偶爾視力模糊', s:'有時伴隨頭暈',     scores:{shen:2,gan:2}},
+      {t:'低頭/仰頭都有拉扯感', s:'整條頸椎都不對', scores:{pang:2,gan:1}},
+      {t:'頭痛集中在後腦勺',   s:'有時延伸到眉稜骨', scores:{gan:2,xin:1}},
+      {t:'頭頂發脹、頭重如戴帽',s:'下午特別嚴重',    scores:{xin:2,pi:1}},
+      {t:'耳鳴、偶爾視力模糊', s:'有時伴隨頭暈',     scores:{shen:2,xin:1}},
     ],
     next:'L2_neck_2'
   },
@@ -478,10 +478,10 @@ const QB = {
     text:'頸肩不舒服什麼時候最嚴重？',
     multi:false,
     opts:[
-      {t:'早上起床時最僵',     s:'需要一段時間才能轉開', scores:{pang:2,shen:1}},
-      {t:'下午連續工作後爆發', s:'撐到某個點突然很緊',   scores:{pang:3}},
+      {t:'早上起床時最僵',     s:'需要一段時間才能轉開', scores:{shen:1,pi:1}},
+      {t:'下午連續工作後爆發', s:'撐到某個點突然很緊',   scores:{pang:1,gan:1}},
       {t:'壓力大、情緒緊時更明顯',s:'心情一放鬆就好一點', scores:{gan:3}},
-      {t:'幾乎全天都這樣',     s:'沒有特別好的時段',      scores:{pang:2,gan:2}},
+      {t:'幾乎全天都這樣',     s:'沒有特別好的時段',      scores:{pi:1,shen:1}},
     ],
     next:null
   },
@@ -492,10 +492,10 @@ const QB = {
     text:'腰背不舒服是哪種感覺？',
     multi:false,
     opts:[
-      {t:'悶脹感，像被壓著',   s:'久站/久坐後特別明顯', scores:{pang:2,shen:2}},
-      {t:'深處有痠痛感',       s:'按壓腰部會有反應',     scores:{shen:3}},
-      {t:'緊繃、肌肉拉扯感',   s:'彎腰直腰都不順',       scores:{pang:3}},
-      {t:'痛感會延伸到臀部/大腿',s:'有時像電流竄下去',   scores:{pang:3,shen:1}},
+      {t:'悶脹感，像被壓著',   s:'久站/久坐後特別明顯', scores:{pi:1,shen:1}},
+      {t:'深處有痠痛感',       s:'按壓腰部會有反應',     scores:{shen:2}},
+      {t:'緊繃、肌肉拉扯感',   s:'彎腰直腰都不順',       scores:{pang:1,gan:1}},
+      {t:'痛感會延伸到臀部/大腿',s:'有時像電流竄下去',   scores:{pang:1,shen:1}},
     ],
     next:'L2_back_2'
   },
@@ -504,9 +504,9 @@ const QB = {
     text:'腰背問題跟以下哪個最相關？',
     multi:false,
     opts:[
-      {t:'久坐後站起來需要緩一下', s:'要撐著東西才能打直', scores:{pang:3}},
-      {t:'早上起床腰特別僵硬',     s:'需要活動一下才正常', scores:{shen:2,pang:2}},
-      {t:'搬重物或用力後加劇',     s:'過勞型',             scores:{shen:3}},
+      {t:'久坐後站起來需要緩一下', s:'要撐著東西才能打直', scores:{pang:1,pi:1}},
+      {t:'早上起床腰特別僵硬',     s:'需要活動一下才正常', scores:{shen:1,gan:1}},
+      {t:'搬重物或用力後加劇',     s:'過勞型',             scores:{shen:1,pi:1}},
       {t:'情緒壓力大時腰也會緊',   s:'',                   scores:{gan:2,pang:1}},
     ],
     next:null
@@ -519,8 +519,8 @@ const QB = {
     multi:false,
     opts:[
       {t:'情緒緊張/壓力大時特別明顯', s:'心情好就好一點', scores:{gan:3,xin:1}},
-      {t:'早上起來容易胸悶',           s:'起床活動後改善', scores:{fei:3}},
-      {t:'吸不到氣、容易嘆氣',         s:'要大口吸氣才舒服', scores:{fei:2,gan:2}},
+      {t:'早上起來容易胸悶',           s:'起床活動後改善', scores:{fei:2,pi:1}},
+      {t:'吸不到氣、容易嘆氣',         s:'要大口吸氣才舒服', scores:{fei:2}},
       {t:'心跳偶爾快、有心悸感',       s:'安靜時特別明顯', scores:{xin:3}},
     ],
     next:'L2_chest_2'
@@ -533,7 +533,7 @@ const QB = {
       {t:'正中間膻中附近悶脹',   s:'', scores:{fei:2,xin:1}},
       {t:'兩側肋骨下緣有壓迫感', s:'', scores:{gan:3}},
       {t:'左胸偶爾刺痛',         s:'短暫出現後消失', scores:{xin:3}},
-      {t:'整個上胸都緊',         s:'像穿了太緊的衣服', scores:{fei:3,pang:1}},
+      {t:'整個上胸都緊',         s:'像穿了太緊的衣服', scores:{fei:2}},
     ],
     next:null
   },
@@ -570,10 +570,10 @@ const QB = {
     text:'腿部膝蓋哪種感覺最明顯？',
     multi:false,
     opts:[
-      {t:'大腿後側像橡皮筋繃緊', s:'坐久了站起來最明顯', scores:{pang:3}},
-      {t:'膝蓋外側或內側酸',     s:'上下樓梯時感覺到',   scores:{pang:2,shen:2}},
-      {t:'小腿後側緊繃、水腫',   s:'傍晚更嚴重',          scores:{pang:2,pi:2}},
-      {t:'腳底板悶脹或刺痛',     s:'久站後明顯',           scores:{shen:3}},
+      {t:'大腿後側像橡皮筋繃緊', s:'坐久了站起來最明顯', scores:{pang:1,pi:1}},
+      {t:'膝蓋外側或內側酸',     s:'上下樓梯時感覺到',   scores:{shen:1,gan:1}},
+      {t:'小腿後側緊繃、水腫',   s:'傍晚更嚴重',          scores:{pi:2,fei:1}},
+      {t:'腳底板悶脹或刺痛',     s:'久站後明顯',           scores:{shen:1,pi:1}},
     ],
     next:null
   },
@@ -584,10 +584,10 @@ const QB = {
     text:'肩膀的不舒服主要是哪一種？',
     multi:false,
     opts:[
-      {t:'斜方肌（頸肩交界）最緊', s:'摸起來像石頭', scores:{pang:3,gan:1}},
-      {t:'肩胛骨之間深層悶', s:'按不到那個點', scores:{pang:3}},
-      {t:'單側肩膀比另一側高/緊',  s:'不對稱',       scores:{gan:2,pang:2}},
-      {t:'舉手時有卡頓感',          s:'某個角度會痛', scores:{pang:2,shen:1}},
+      {t:'斜方肌（頸肩交界）最緊', s:'摸起來像石頭', scores:{gan:2,fei:1}},
+      {t:'肩胛骨之間深層悶', s:'按不到那個點', scores:{fei:2,xin:1}},
+      {t:'單側肩膀比另一側高/緊',  s:'不對稱',       scores:{gan:2,pi:1}},
+      {t:'舉手時有卡頓感',          s:'某個角度會痛', scores:{fei:1,shen:1}},
     ],
     next:null
   },
@@ -614,7 +614,7 @@ const QB = {
     opts:[
       {t:'難以入睡，腦袋停不下來', s:'', scores:{xin:3,gan:1}},
       {t:'容易驚醒、多夢',         s:'', scores:{xin:2,shen:2}},
-      {t:'睡很多但還是累',         s:'', scores:{pi:3,shen:1}},
+      {t:'睡很多但還是累',         s:'', scores:{pi:2,fei:1}},
       {t:'睡眠還好',               s:'', scores:{}},
     ],
     next:null
@@ -627,8 +627,8 @@ const QB = {
     opts:[
       {t:'壓力大就拉肚子或腸胃敏感', s:'', scores:{gan:3,pi:1}},
       {t:'常常胃脹、消化慢',          s:'', scores:{pi:3}},
-      {t:'食慾不好，吃東西沒味道',    s:'', scores:{pi:2,shen:1}},
-      {t:'腸胃還好',                   s:'', scores:{}},
+      {t:'食慾不好，吃東西沒味道',    s:'', scores:{pi:1,fei:1}},
+      {t:'腸胃還好',                   s:'', scores:{fei:1}},
     ],
     next:null
   },
@@ -641,7 +641,7 @@ const QB = {
       {t:'手腳冰冷，很怕吹冷氣', s:'', scores:{shen:3,pi:1}},
       {t:'容易燥熱、口渴',       s:'', scores:{gan:2,xin:2}},
       {t:'上熱下冷，頭熱腳涼',   s:'', scores:{shen:2,xin:2}},
-      {t:'還算正常',              s:'', scores:{}},
+      {t:'還算正常',              s:'', scores:{fei:1}},
     ],
     next:null
   },
@@ -652,8 +652,8 @@ const QB = {
     multi:false,
     opts:[
       {t:'好好休息也補不回來',   s:'累積型',        scores:{shen:3,pi:1}},
-      {t:'短暫休息後好一點，但很快又累', s:'', scores:{pi:2,xin:1}},
-      {t:'按摩後舒服，但沒幾天又回來',  s:'', scores:{pang:3}},
+      {t:'短暫休息後好一點，但很快又累', s:'', scores:{fei:1,pi:1}},
+      {t:'按摩後舒服，但沒幾天又回來',  s:'', scores:{pang:1,gan:1}},
       {t:'體力還好，主要心理壓力大',    s:'', scores:{xin:3}},
     ],
     next:null
@@ -665,12 +665,12 @@ const QB = {
     hint:'可複選，最多2個',
     multi:true, max:2,
     opts:[
-      {t:'肩頸立刻緊起來',     s:'', scores:{pang:2,gan:1}},
-      {t:'胃部不舒服、食慾差', s:'', scores:{gan:2,pi:2}},
-      {t:'呼吸變淺、容易嘆氣', s:'', scores:{fei:2,gan:1}},
+      {t:'肩頸立刻緊起來',     s:'', scores:{gan:2}},
+      {t:'胃部不舒服、食慾差', s:'', scores:{pi:2,fei:1}},
+      {t:'呼吸變淺、容易嘆氣', s:'', scores:{fei:2}},
       {t:'心跳加速或心悸感',   s:'', scores:{xin:3}},
       {t:'整個人提不起勁',     s:'', scores:{shen:2,pi:2}},
-      {t:'頭腦變得遲鈍、思緒亂',s:'', scores:{xin:2,pi:1}},
+      {t:'頭腦變得遲鈍、思緒亂',s:'', scores:{xin:1,fei:1}},
     ],
     next:null
   },
@@ -681,10 +681,10 @@ const QB = {
     text:'久坐時，最常出現哪些狀況？',
     hint:'可複選，最多2個', multi:true, max:2,
     opts:[
-      {t:'坐超過90分鐘背就痛',     s:'', scores:{pang:3}},
-      {t:'骨盆歪斜、腰容易往前傾', s:'', scores:{shen:2,pang:2}},
+      {t:'坐超過90分鐘背就痛',     s:'', scores:{pang:1,fei:1}},
+      {t:'骨盆歪斜、腰容易往前傾', s:'', scores:{shen:1,pi:1}},
       {t:'下午眼皮沉、注意力渙散', s:'', scores:{pi:2,shen:1}},
-      {t:'頸部前傾、低頭族症狀',   s:'', scores:{pang:2,gan:1}},
+      {t:'頸部前傾、低頭族症狀',   s:'', scores:{gan:2}},
     ], next:null
   },
   JOB_mental:{
@@ -715,9 +715,9 @@ const QB = {
     multi:false,
     opts:[
       {t:'肩膀、上臂，舉手費力', s:'', scores:{pang:2,gan:1}},
-      {t:'腰部，彎了一天很難打直',s:'', scores:{shen:3,pang:2}},
-      {t:'膝蓋、大腿',           s:'', scores:{shen:3}},
-      {t:'全身都很累，說不清哪最嚴重',s:'', scores:{pi:3,shen:1}},
+      {t:'腰部，彎了一天很難打直',s:'', scores:{shen:1,pang:1}},
+      {t:'膝蓋、大腿',           s:'', scores:{shen:1,pi:1}},
+      {t:'全身都很累，說不清哪最嚴重',s:'', scores:{pi:2}},
     ], next:null
   },
   JOB_athlete:{
@@ -736,7 +736,7 @@ const QB = {
     text:'熬夜/輪班後，身體的反應？',
     multi:false,
     opts:[
-      {t:'頭很重但睡不著，心跳偶爾快', s:'', scores:{xin:3,shen:1}},
+      {t:'頭很重但睡不著，心跳偶爾快', s:'', scores:{xin:2}},
       {t:'胃口變差、消化慢',           s:'', scores:{pi:3}},
       {t:'手腳冰冷、非常怕冷',         s:'', scores:{shen:3}},
       {t:'眼睛充血、情緒煩躁',         s:'', scores:{gan:3}},
@@ -748,9 +748,9 @@ const QB = {
     multi:false,
     opts:[
       {t:'太忙，完全沒時間注意',     s:'', scores:{gan:2,xin:1}},
-      {t:'某個姿勢維持太久才發現',   s:'', scores:{pang:3}},
-      {t:'下班後才一次爆發',         s:'', scores:{pang:2,shen:2}},
-      {t:'睡前才感覺到全身緊',       s:'', scores:{shen:2,xin:2}},
+      {t:'某個姿勢維持太久才發現',   s:'', scores:{pang:1,pi:1}},
+      {t:'下班後才一次爆發',         s:'', scores:{gan:1,xin:1}},
+      {t:'睡前才感覺到全身緊',       s:'', scores:{shen:1,xin:1}},
     ], next:null
   },
 };
