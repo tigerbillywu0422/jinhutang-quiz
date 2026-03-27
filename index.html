@@ -599,10 +599,10 @@ const QB = {
     text:'本週的情緒和精神狀態？',
     multi:false,
     opts:[
-      {t:'腦子停不下來，很難放鬆', s:'', scores:{xin:3,gan:1}},
-      {t:'容易煩躁，小事有反應',   s:'', scores:{gan:3}},
-      {t:'情緒平，但身體很累',     s:'', scores:{pi:2,shen:2}},
-      {t:'提不起勁，什麼都不想做', s:'', scores:{shen:3,pi:1}},
+      {t:'腦子停不下來，很難放鬆', s:'', scores:{xin:3,gan:2}},
+      {t:'容易煩躁，小事有反應',   s:'', scores:{gan:4}},
+      {t:'情緒平，但身體很累',     s:'', scores:{pi:3,shen:2}},
+      {t:'提不起勁，什麼都不想做', s:'', scores:{shen:3,pi:2}},
     ],
     next:null
   },
@@ -612,8 +612,8 @@ const QB = {
     text:'本週睡眠狀況？',
     multi:false,
     opts:[
-      {t:'難以入睡，腦袋停不下來', s:'', scores:{xin:3,gan:1}},
-      {t:'容易驚醒、多夢',         s:'', scores:{xin:2,shen:2}},
+      {t:'難以入睡，腦袋停不下來', s:'', scores:{xin:4,gan:1}},
+      {t:'容易驚醒、多夢',         s:'', scores:{xin:3,shen:2}},
       {t:'睡很多但還是累',         s:'', scores:{pi:2,fei:1}},
       {t:'睡眠還好',               s:'', scores:{}},
     ],
@@ -625,8 +625,8 @@ const QB = {
     text:'本週腸胃狀況？',
     multi:false,
     opts:[
-      {t:'壓力大就拉肚子或腸胃敏感', s:'', scores:{gan:3,pi:1}},
-      {t:'常常胃脹、消化慢',          s:'', scores:{pi:3}},
+      {t:'壓力大就拉肚子或腸胃敏感', s:'', scores:{gan:4,pi:1}},
+      {t:'常常胃脹、消化慢',          s:'', scores:{pi:4}},
       {t:'食慾不好，吃東西沒味道',    s:'', scores:{pi:1,fei:1}},
       {t:'腸胃還好',                   s:'', scores:{fei:1}},
     ],
@@ -639,7 +639,7 @@ const QB = {
     multi:false,
     opts:[
       {t:'手腳冰冷，很怕吹冷氣', s:'', scores:{shen:3,pi:1}},
-      {t:'容易燥熱、口渴',       s:'', scores:{gan:2,xin:2}},
+      {t:'容易燥熱、口渴',       s:'', scores:{gan:3,xin:2}},
       {t:'上熱下冷，頭熱腳涼',   s:'', scores:{shen:2,xin:2}},
       {t:'還算正常',              s:'', scores:{fei:1}},
     ],
@@ -651,10 +651,10 @@ const QB = {
     text:'本週體力恢復的感覺？',
     multi:false,
     opts:[
-      {t:'好好休息也補不回來',   s:'累積型',        scores:{shen:3,pi:1}},
+      {t:'好好休息也補不回來',   s:'累積型',        scores:{shen:4,pi:2}},
       {t:'短暫休息後好一點，但很快又累', s:'', scores:{fei:1,pi:1}},
       {t:'按摩後舒服，但沒幾天又回來',  s:'', scores:{pang:1,gan:1}},
-      {t:'體力還好，主要心理壓力大',    s:'', scores:{xin:3}},
+      {t:'體力還好，主要心理壓力大',    s:'', scores:{xin:4}},
     ],
     next:null
   },
@@ -668,8 +668,8 @@ const QB = {
       {t:'肩頸立刻緊起來',     s:'', scores:{gan:2}},
       {t:'胃部不舒服、食慾差', s:'', scores:{pi:2,fei:1}},
       {t:'呼吸變淺、容易嘆氣', s:'', scores:{fei:2}},
-      {t:'心跳加速或心悸感',   s:'', scores:{xin:3}},
-      {t:'整個人提不起勁',     s:'', scores:{shen:2,pi:2}},
+      {t:'心跳加速或心悸感',   s:'', scores:{xin:4}},
+      {t:'整個人提不起勁',     s:'', scores:{shen:3,pi:3}},
       {t:'頭腦變得遲鈍、思緒亂',s:'', scores:{xin:1,fei:1}},
     ],
     next:null
@@ -899,7 +899,7 @@ function loadQ(id){
 
   const btn=document.getElementById('btn-next');
   btn.disabled=true;
-  btn.textContent=qIdx>=queue.length-1?'查看我的體質報告 →':'下一題 →';
+  btn.textContent='下一題 →';
 }
 
 // ══════════════════════════════════
@@ -936,9 +936,7 @@ function pickOpt(i){
     curAnswers=[i];
     document.getElementById('btn-next').disabled=false;
   }
-  // 動態更新按鈕文字
-  document.getElementById('btn-next').textContent=
-    qIdx>=queue.length-1?'查看我的體質報告 →':'下一題 →';
+  document.getElementById('btn-next').textContent='下一題 →';
 }
 
 // ══════════════════════════════════
@@ -984,13 +982,12 @@ function nextQ(){
     goToLoading();
   } else {
     loadQ(queue[qIdx]);
+    // 在新題載入後，判斷是否為最後一題
+    setTimeout(()=>{
+      const btn=document.getElementById('btn-next');
+      if(btn) btn.textContent=qIdx>=queue.length-1?'查看我的體質報告 →':'下一題 →';
+    },80);
   }
-
-  // 更新下一題按鈕文字
-  setTimeout(()=>{
-    const btn=document.getElementById('btn-next');
-    if(btn) btn.textContent=qIdx>=queue.length-1?'查看我的體質報告 →':'下一題 →';
-  },50);
 }
 
 // ══════════════════════════════════
